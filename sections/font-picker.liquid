@@ -1,0 +1,40 @@
+{% assign selected_font = section.settings.font %}
+
+<style>
+  {{ selected_font | font_face }}
+
+  .font-picker-demo {
+    font-family: {{ selected_font.family }}, {{ selected_font.fallback_families }};
+    padding: 20px;
+    border: 2px solid #000;
+  }
+</style>
+
+<div class="font-picker-demo">
+  {{ section.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Font Picker",
+  "settings": [
+    {
+      "type": "font_picker",
+      "id": "font",
+      "label": "Choose font",
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "This text changes font"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Font Picker"
+    }
+  ]
+}
+{% endschema %}
